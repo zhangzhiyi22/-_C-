@@ -1,0 +1,58 @@
+a: What is an operator in C++?
+是我们使用的一些符号，通常代替一些函数来执行一些事情
+b: Give examples of non-mathematical operators and explain their common
+usages. 
+dereference（逆向引用），箭头， &取地址，<<左移运算符，还有new， delete
+c: When would you need to overload an operator? Give an example of operatoroverloading 
+in your code and explain its benefits.
+自定义类型操作；改善可读性；
+class Complex {
+public:
+    Complex(double r = 0.0, double i = 0.0) : real(r), imag(i) {}
+
+    // 重载加法操作符
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imag + other.imag);
+    }
+
+private:
+    double real, imag;
+};
+
+
+d: Where do you put the definitions of the overloads of the output operator?
+在类外面定义
+
+e: What is the distinction between function overloads and operator overloads?
+应用范围：函数重载适用于函数；操作符重载适用于操作符。
+目的和使用场景：函数重载主要用于同名函数处理不同类型的数据；操作符重载主要用于让自定义类型支持标准操作符。
+实现方式：函数重载通过改变参数列表实现；操作符重载则是对已有操作符进行重新定义。
+
+f: What would be the two right ways to return a local scope object from a function?
+一个是在堆上分配。或者将创建的数据复制给一个在栈作用域之外存在的变量
+g: Describe the lifetime of objects allocated on the stack. 
+当调用一个函数时，它里面的局部变量会被创建，然后在函数体内，可以被使用，在函数使用结束后，
+这些局部变量会被销毁。
+h: The episode 43 introduces a custom scoped pointer class. What is its purpose?
+管理动态分配（通常是在堆上）的对象，以确保资源的自动释放
+
+i: Explain how to automate the delete operation for a heap-allocated object via
+the design of a smart pointer. 
+ScopedPtr e  = new  Entity（）； 当智能指针的实例离开函数作用域或者被销毁后，会调用析构函数
+
+
+j: Explain the statement that "When you use the assignment operator, you're
+always copying the value except when you deal with references". 
+赋值运算符通常用于值的复制，但当涉及引用时，情况有所不同，因为引用是对另一个变量
+的直接关联，而不是值的一个独立副本
+
+k: Explain the concept of shallow copy and deep copy. 
+浅拷贝：就像复制一份文件的快捷方式，不是文件本身。如果原始文件被删除，快捷方式就无法使用了。
+
+深拷贝：就像复制文件本身到另一个地方，完全独立，不会因为原始文件的改变而受影响。
+
+l: Why is it a good practice to always pass your object by const reference?
+可以提升效率，减少拷贝；还可以防止修改；通用性提高
+m: What is the use of the friend keyword, and without which, how can you
+achieve the same objective
+能够访问私有成员变量。   在public中写一个get（）函数得到

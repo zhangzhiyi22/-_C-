@@ -1,0 +1,25 @@
+a. What are the three basic visibility modifiers in C++, and how do they control
+access to class members?
+
+private ： 只有类内可以访问
+protected  ： 类内和所有子类都可以访问
+public   ：类内，类外，所有子类都可以访问
+
+b. Explain the significance of using private visibility in a class.
+private意味着只能在类内访问，表现出了封装性，还可以控制访问，同时，在其他人使用代码时，可以
+防止误用。还可以帮助自己回忆起代码如何工作。
+c. Explain the different applications of the const keyword with pointers; in
+particular, what does "const int * " mean and what does "int * const" mean?
+const int * 意味着不能修改指针指向的内容
+int * const可以修改指针指向的内容，但不能把实际的阵阵本身重新赋值
+d. Why do we need "const" methods inside a class?
+表明方法不会修改对象状态；增加可读性和维护性；提高重载的灵活性，一个加const'，一个不加
+
+e. Can we modify the class object within a const method? How?
+使用mutable关键字
+f. What is the use of the member initializer and what is the advantage of using it?
+Entity() : m_Name("Unknown"), m_Score(0)类似这样，使构造函数易于阅读
+g. What should the order of members in the member initializer list be?
+按照它们在类中声明的顺序初始化
+h. If the above order is not as expected, what would happen?
+会产生各种各样的依赖性问题

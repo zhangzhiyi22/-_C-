@@ -1,0 +1,44 @@
+a: What is a template?
+允许定义一个可以根据你的用途进行编译的模板
+b: Is it correct to say that the template doesn't really exist until we call it?
+对，它们并不是实际的函数，但调用的时候，基于传递的函数，才被创建，并作为原代码被编译
+c: When would you use the template to write a function as a template function?
+当像编写一个可以处理多种数据类型的函数，不需要函数重载。
+d: Even if there is an obvious syntax error with a template function, the code might 
+still compile successfully. When would this happen and why?
+当这个函数没有被调用的时候，因为这时它们并不是实际的函数。
+e: When can you call a template function without specifying the actual type?
+当编译器能够从上下文推断出类型时
+f: Apart from deferring the actual type by using a template, can you defer the actual 
+value of a particular type by using a template?
+可以     template<int N>    Array<5>  array  
+g: When would it be a good idea to use the auto keyword?
+数据类型名字很长或很复杂，用auto很简洁
+h: Explain the claim that "just because you might be returning a reference doesn't 
+mean it's actually gonna store it as a reference"?
+如果初始化表达式表达的是一个引用的化，auto推断出的时被引用对象的类型，而不是引用类型本身
+int& foo() {
+    static int value = 10;
+    return value;
+}
+auto myVar = foo(); // myVar的类型是int，而不是int&
+
+i: What are the advantages and disadvantages of auto compared to explicit type 
+declarations?
+优点：简化代码，减少错误，增强代码可维护性
+缺点：减小代码的可读性，可能会由于api找不对导致问题。
+j: Is it correct to say that variables declared with auto must be initialized?
+是的   不能写  auto  y这种
+k: What is the ‘typedef’ keyword in C++?
+为现有的类型创建一个别名，减少复杂性
+l: What is the use of a function pointer?
+是将一个函数赋值给一个指针
+m: How to assign a function to a variable using function pointers?
+定义一个函数指针类型  int (*FunctionPointer)(int, int);
+FunctionPointer = add;
+
+n: How to make the definition of a function pointer object more like the definition 
+of a usual type object?
+用这个
+typedef int (*FunctionPointerTypedef)(int, int);
+FunctionPointerTypedef myFuncPtr;

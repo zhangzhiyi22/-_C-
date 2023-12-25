@@ -1,0 +1,32 @@
+a: What is the only difference between a class and a struct in C++?
+可见性
+
+b: Why does struct even exist in C++?
+为了保持与c的向后兼容性
+c: When would you use a struct and when would you use a class?
+struct：所有成员都是公共的，又不想写public；只表示变量
+class：当牵涉到继承的时候；有大量功能的类
+d: The name of an array is interpreted as what type?
+指针类型
+e: How does an array store data in memory?
+连续的内存分配，数组的第一个元素位于基地址。
+f: What is pointer arithmetic?
+加上一个整数后，会移动到一个新的地址
+g: What is the difference between creating an object on the stack and creating an 
+object on the heap?
+在栈上的运行完后会自动删除，堆上的需要delate手动删除，并且创建的时候使用new
+h: What is a C-style string?
+const char* name=
+i: A string is essential an array of what?
+ const char
+j: A string ends with what?
+0
+k: What is the syntax difference between a char literal and a string literal?
+string是c++标准库中的，使用双引号，可以包含多个字符，以‘\0'自动结尾
+char用单引号，包含一个字符。
+l: Distinguish between 0, '0', and '\0'.
+第一个是ascii序号，第二个是char，第三个是空指针
+m: What is a standard string in C++?
+动态大小，自动管理内存，含有比较多的成员函数，还有运算符重载。
+n: What is the preferred way of passing an object into a read-only function?
+const加引用，更加安全

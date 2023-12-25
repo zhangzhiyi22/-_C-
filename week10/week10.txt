@@ -1,0 +1,27 @@
+a. What determines the extent or the lifetime of objects allocated on the stack/heap?
+栈对象有一个自动的生存期，由它声明的地方作用域决定，变量超出作用域，就会释放。
+堆对象会一直呆在那里，直到做出决定手动释放
+b. When do we want to create an object on the stack, or when we cannot create an
+object on the stack?
+栈通常很小，如果一个对象很多或者很大，尽量在堆上创建，或者要显式的控制对象的生存期。
+其余情况通常在栈上创建，比较简单。
+
+c. What is the return type of the new operator?
+指向一个内存的指针
+d. What is the difference between using the new keyword for a single object and
+for an array of objects?
+int* b =new int;     int *b = new int[50];
+e. What about the delete keyword for a single object and for an array of objects?
+
+delete[] entity;      delete e;
+
+f. When allocating a single object using the new operator, it can additionally do
+what?
+分配内存存储对象，并且调用析构函数
+
+h. Why are the stack allocation and the stack deallocation extremely fast?
+ 只是把东西堆到一起，做的只是移动栈指针，然后返回地址，此外，栈的地址空间是连续的
+。由cpu操作
+i. The main performance difference between the stack and the heap lies in what
+operation on them
+new  delete

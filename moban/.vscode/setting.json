@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/dass/c++/mingw64/include"  
+            ]
+         
+        }
+    ],
+    "version": 4
+}

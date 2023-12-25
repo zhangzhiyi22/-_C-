@@ -1,0 +1,53 @@
+a: In addition to 'Entity e; e.x=2; e.y=3;' what is the other way of initializing a struct 
+element mentioned in the video?
+
+Entity e1；  Entity::x=4; Entity::y=8;
+
+b: What is the purpose of the statement “int Entity::x;”?
+保证链接器可以链接到合适的变量。
+c: When we set the variables x and y in the struct Entity as static, and then call 
+these variables in different instances, what will happen?
+静态共用一个地址，只有一个实例，所以它们会指向相同的x y
+d: How to call a static method of a struct from outside?
+
+static void Print(){
+  cout <<e.x <<"," <<e,y << endl;
+}
+e: What is the “Local Static” in C++?
+在函数范围内使用static关键字声明的变量.
+f: Why does 'Print Entity("Cherno")' result in an error?
+因为这是一个char，不是一个string。
+g: As to the “question f”, how can I modify it?
+Print Entity(std：：string（"Cherno")）；
+Print Entity(Entity（"Cherno")）；
+h: In C++, what is the 'explicit' keyword and what does it do?
+放在构造函数前面，意味着没有隐式转化。
+i: In C++, what is 'this', and what does it point to?
+ 通过this，可以访问成员函数，是一个指向当前实例的指针
+j: Why do we use ‘->’ instead of ‘.’ when accessing member variables using ‘this’?
+因为这是一个指针。代表的是Entity* e；
+k: What is the effect of the static keyword for a class member variable?
+所有实例之间共享成员变量； 生命周期贯穿整个程序；需要在类外显式定义和初始化。
+l: Is it correct to say that static member variables are no longer class members, 
+they're just global variables but restricted to be used in a class scope?
+不能这样说，只是在某些方面类似，作用域有限制，需要通过类名房访问，还是类的一部分。
+m: What is the effect of the static keyword for a class member function?
+静态成员函数与类的任何特定实例无关，意味它们不能访问非静态成员函数和变量。不需要对象调用
+例如 Entity：：Print（）；
+n: Is it correct to say that static member functions are no longer class members, 
+they're just functions in a file scope but restricted to be used in a class scope?
+不行，因为它们的访问仍然收到限制（public，private，protected），需要类名才能访问。
+o: How many times can implicit conversions happen in a row?
+一次
+p: Can static member functions access non-static member variables? Why?
+不能，因为静态成员函数与实例无关。
+q: Is it correct to say that static local variables are just global variab
+les but are restricted to be used in a local scope?
+不行，有作用于限制，还有它们的初始化是在首次调用时，而不是在程序开始时。
+r: Can I return a local variable in a function by reference? What about a local static 
+variable?
+返回局部变量不安全  。但是局部静态变量可以。
+s: What is the type of this pointer in const member functions and in non-const 
+member functions, respectively?
+常数成员函数： 类型为 const Entity*
+非常数    ： Entity*
